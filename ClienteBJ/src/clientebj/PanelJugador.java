@@ -17,8 +17,8 @@ import comunes.Carta;
 
 public class PanelJugador extends JPanel {
 	//constantes de clase
-	private static final int ANCHO = 206;
-	private static final int ALTO = 89;
+	private static final int ANCHO = 270;//206
+	private static final int ALTO = 100;//89
 	
 	//variables para control del graficado
 	private ArrayList<Recuerdo> dibujoRecordar;

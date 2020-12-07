@@ -126,7 +126,7 @@ public class VentanaSalaJuego extends JInternalFrame {
 			
 			yoFull = new JPanel();
 			yoFull.setLayout(new GridLayout(2,1));
-			yoFull.setPreferredSize(new Dimension(206,100));
+			yoFull.setPreferredSize(new Dimension(270,270));//206 100
 			constraints.gridx = 0;
 			constraints.gridy = 0;
 			constraints.gridwidth =1;
