@@ -8,10 +8,27 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+
 public class Baraja {
+	/** The Constant CARTAS_FILE. */
+  	public static final String CARTAS_FILE="/resources/cards.png";
+	   
+  	/** The Constant CARTA_WIDTH. */
+  	public static final int CARTA_WIDTH=45;
+	   
+  	/** The Constant CARTA_HEIGHT. */
+  	public static final int CARTA_HEIGHT=60;
+	   
+  	/** The Constant PALOS. */
+  	private static final int PALOS=4;
+	   
+  	/** The Constant VALORES. */
+  	private static final int VALORES=13;
+  	
    private ArrayList<Carta> mazo;
    private Random aleatorio;
    
+  	
    public Baraja() {
 	   aleatorio = new Random();
 	   mazo = new ArrayList<Carta>();
@@ -34,7 +51,18 @@ public class Baraja {
 		   }
 	   }
    }
-   
+   private void asignarImagen() {   	   
+	   BufferedImage cardsImage = FileIO.readImageFile(this, CARTAS_FILE);
+		int index = 0;
+	    for (int palo = 0; palo < PALOS; palo++) {
+	      for (int valor = 0; valor < VALORES; valor++) {
+	          int x = valor * CARTA_WIDTH;
+	          int y = palo * CARTA_HEIGHT;
+	          mazo.get(index).setImagen(cardsImage.getSubimage(x, y, CARTA_WIDTH, CARTA_HEIGHT));
+	          index++;
+	      } 
+	     }		    
+  }
    public Carta getCarta() {
 	   int index = aleatorio.nextInt(mazoSize());
 	   Carta carta = mazo.get(index);
