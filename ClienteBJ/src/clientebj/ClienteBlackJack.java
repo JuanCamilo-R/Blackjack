@@ -39,15 +39,15 @@ import comunes.DatosBlackJack;
  */
 public class ClienteBlackJack extends JFrame implements Runnable{
 	//Constantes de Interfaz Grafica
-	public static final int WIDTH=670;
-	public static final int HEIGHT=360;
+	public static final int WIDTH=800;//670
+	public static final int HEIGHT=600;//360
 	
 	//Constantes de conexión con el Servidor BlackJack
-	public static final int PUERTO=7377;
+	public static final int PUERTO=7373;
 	public static final String IP="127.0.0.1";
 	
 	//variables de control del juego
-	private String idYo, otroJugador;
+	private String idYo, otroJugador, otroJugador3;
 	private boolean turno;
 	private DatosBlackJack datosRecibidos;
 	
@@ -158,7 +158,7 @@ public class ClienteBlackJack extends JFrame implements Runnable{
 		//datosRecibidos = new DatosBlackJack();
 		// TODO Auto-generated method stub
 		//mostrar bienvenida al jugador	
-		   
+		   //CAMBIAR
 			try {
 				datosRecibidos = new DatosBlackJack();
 				datosRecibidos = (DatosBlackJack) in.readObject();
@@ -206,7 +206,7 @@ public class ClienteBlackJack extends JFrame implements Runnable{
 				// TODO Auto-generated method stub
 				ventanaEspera = (VentanaEspera)containerInternalFrames.getComponent(0);
 				ventanaEspera.cerrarSalaEspera();
-				ventanaSalaJuego = new VentanaSalaJuego(idYo,otroJugador);
+				ventanaSalaJuego = new VentanaSalaJuego(idYo,otroJugador, otroJugador3);
 				ventanaSalaJuego.pintarCartasInicio(datosRecibidos);
 				adicionarInternalFrame(ventanaSalaJuego);
                 if(turno) {

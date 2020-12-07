@@ -17,59 +17,63 @@ import comunes.Carta;
 
 public class PanelJugador extends JPanel {
 	//constantes de clase
-	private static final int ANCHO = 206;
-	private static final int ALTO = 89;
+	private static final int ANCHO = 270;//206
+	private static final int ALTO = 150;//89
 	
 	//variables para control del graficado
-	private ArrayList<Recuerdo> dibujoRecordar;
-	private int x;
+	private ArrayList<Recuerdo> cartasRecuerdo;
+	private int coordenadaX;
 	    
 	public PanelJugador(String nombreJugador) {
 		//this.setBackground(Color.GREEN);
-		dibujoRecordar = new ArrayList<Recuerdo>();
+		cartasRecuerdo = new ArrayList<Recuerdo>();
 		this.setPreferredSize(new Dimension(ANCHO,ALTO));
 		TitledBorder bordes;
 		bordes = BorderFactory.createTitledBorder(nombreJugador);
 		this.setBorder(bordes);
 	}
 	
-	public void pintarCartasInicio(ArrayList<Carta> manoJugador) {
-		x=5;
-	    for(int i=0;i<manoJugador.size();i++) {
-	    	dibujoRecordar.add(new Recuerdo(manoJugador.get(i),x));
-	    	x+=27;
-	    }			
-	    repaint();
+	public void dibujarCarta(Carta carta) {
+		cartasRecuerdo.add(new Recuerdo(carta.getImagen(),coordenadaX));
+		coordenadaX+=17;
+		repaint();
 	}
-	
+	/*
 	public void pintarLaCarta (Carta carta) {
 		dibujoRecordar.add(new Recuerdo(carta,x));
 		x+=27;
 		repaint();
 	}
-	
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		Font font =new Font(Font.DIALOG,Font.BOLD,12);
-		g.setFont(font);
-				
-		//pinta la mano inicial
-		for(int i=0;i<dibujoRecordar.size();i++) {
-			g.drawString(dibujoRecordar.get(i).getCartaRecordar(), dibujoRecordar.get(i).getxRecordar(),35);
-		}	
+	public void pintarCartasInicio(ArrayList<Carta> manoJugador) {
+		x=5;
+		for(int i=0;i<manoJugador.size();i++) {
+			dibujoRecordar.add(new Recuerdo(manoJugador.get(i),x));
+			x+=27;
+		}			
+		repaint();
 	}
-	
+	*/
+	public void paintComponent(Graphics g)  {
+		super.paintComponent(g); 
+		//Pinta con memoria
+		
+			for(Recuerdo carta : cartasRecuerdo) {
+				g.drawImage(carta.getImagenRecordar(), carta.getxRecordar(),20, this);
+			}
+			//clase.seguir=true;		
+		}
+
 	private class Recuerdo{
-		private Carta cartaRecordar;
+		private Image imagenRecordar;
 		private int xRecordar;
 
-		public Recuerdo(Carta cartaRecordar, int xRecordar) {
-			this.cartaRecordar = cartaRecordar;
+		public Recuerdo(Image imagenRecordar, int xRecordar) {
+			this.imagenRecordar = imagenRecordar;
 			this.xRecordar = xRecordar;
 		}
 
-		public String getCartaRecordar() {
-			return cartaRecordar.toString();
+		public Image getImagenRecordar() {
+			return imagenRecordar;
 		}
 
 		public int getxRecordar() {

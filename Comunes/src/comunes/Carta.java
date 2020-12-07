@@ -1,13 +1,18 @@
 package comunes;
 
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
-public class Carta implements Serializable{
-    private String valor;
-    private String palo;
+public class Carta extends JLabel implements Serializable{
+    String valor;
+    String palo;
+    Image imagen;
 	
     public Carta(String valor, String palo) {
 		this.valor = valor;
@@ -29,8 +34,12 @@ public class Carta implements Serializable{
 	public void setPalo(String palo) {
 		this.palo = palo;
 	}
-	
-	public String toString() {
-		return valor+palo;
+
+	public Image getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(Image imagen) {
+		this.imagen = imagen;
 	}
 }
