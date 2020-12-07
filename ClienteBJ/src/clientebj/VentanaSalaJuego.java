@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -124,13 +125,22 @@ public class VentanaSalaJuego extends JInternalFrame {
 			panelBotones.add(plantar);
 			
 			yoFull = new JPanel();
+			yoFull.setLayout(new GridLayout(2,1));
 			yoFull.setPreferredSize(new Dimension(206,100));
 			constraints.gridx = 0;
-			constraints.gridy = 2;
-			constraints.gridwidth = 1;
+			constraints.gridy = 0;
+			constraints.gridwidth =1;
 			constraints.gridheight = 1;
-			yoFull.add(panelYo);
-			yoFull.add(panelBotones);
+			yoFull.add(panelYo, constraints);
+			constraints.gridx = 0;
+			constraints.gridy = 1;
+			constraints.gridwidth =1;
+			constraints.gridheight = 1;
+			yoFull.add(panelBotones, constraints);
+			constraints.gridx = 0;
+			constraints.gridy = 2;
+			constraints.gridwidth =1;
+			constraints.gridheight = 1;
 			add(yoFull,constraints);	
 		}
 		
