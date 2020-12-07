@@ -140,7 +140,9 @@ public class VentanaSalaJuego extends JInternalFrame {
 			constraints.gridx = 0;
 			constraints.gridy = 2;
 			constraints.gridwidth =1;
-			constraints.gridheight = 1;
+			constraints.gridheight = 2;
+			constraints.anchor = constraints.SOUTHWEST;
+			//constraints.fill = constraints.SOUTHWEST;
 			add(yoFull,constraints);	
 		}
 		
